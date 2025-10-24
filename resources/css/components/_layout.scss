@@ -1,0 +1,42 @@
+:root{
+  --bscn-header-h: 44px;
+  --bscn-sidebar-w: 240px;
+  --bscn-azul-escuro: #0a3a7a;
+}
+
+/* HEADER – agora não é fixo */
+.bscn-header{
+  height: var(--bscn-header-h);
+  display: flex; align-items: center; gap: .5rem;
+  padding: 0 .75rem;
+  background: #fff; border-bottom: 2px solid var(--bscn-azul-escuro);
+}
+.bscn-header .page-title{
+  font-size: 14px; font-weight: 600; margin: 0;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.bscn-toggle{
+  border: 0; background: transparent; padding: .25rem .5rem; cursor: pointer; border-radius: 6px;
+}
+.icon{ width: 20px; height: 20px; stroke: #111; fill: none; stroke-width: 2; }
+
+/* LAYOUT */
+.sidebar{
+  width: var(--bscn-sidebar-w);
+  background: #0f2e52; color: #fff;
+  min-height: 100vh;
+  transition: transform .2s ease;
+  /* desktop: sidebar visível por defeito */
+}
+#sidebar-overlay{
+  position: fixed; inset: 0; top: var(--bscn-header-h);
+  background: rgba(0,0,0,.35);
+  opacity: 0; pointer-events: none; z-index: 40;
+}
+/* Mobile off-canvas (o teu app.js já alterna estas classes) */
+.sidebar.sidebar--mobile-hidden{ position: fixed; top: var(--bscn-header-h); bottom: 0; left: 0; transform: translateX(-100%); z-index: 41; }
+.sidebar.sidebar--mobile-visible{ position: fixed; top: var(--bscn-header-h); bottom: 0; left: 0; transform: translateX(0); z-index: 41; }
+.sidebar-overlay--active{ opacity: 1 !important; pointer-events: auto !important; }
+
+/* Utilitário opcional quando quiseres encurtar o content no desktop */
+.content--collapsed{ /* espaço para ajustes se precisares */ }

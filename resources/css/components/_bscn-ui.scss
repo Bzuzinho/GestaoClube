@@ -1,0 +1,158 @@
+// === BSCN Estilos Globais em SCSS ===
+
+
+
+// === Variáveis (exemplo) ===
+$cor-primaria: #0d6efd;
+$cor-secundaria: #e9ecef;
+$font-base: 13px;
+
+// === Botões Compactos ===
+.btn-compact {
+  font-size: $font-base;
+  padding: 4px 10px;
+  font-weight: 500;
+  border-radius: 4px;
+
+  i {
+    font-size: 14px;
+    margin-right: 4px;
+  }
+}
+
+// === Tabelas Compactas ===
+.table-compact {
+  font-size: $font-base;
+
+  th,
+  td {
+    padding: 0.35rem 0.5rem;
+    font-size: $font-base;
+    vertical-align: middle;
+  }
+
+  thead th {
+    background-color: $cor-secundaria;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #333;
+  }
+
+  .acoes {
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .btn,
+  .badge {
+    font-size: 12px;
+    padding: 2px 6px;
+  }
+}
+
+.table-header {
+  background-color: $cor-primaria;
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  margin-bottom: 0;
+  display: inline-block;
+}
+
+// === Visualização de Dados ===
+.visual-bloco {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 6px;
+  font-size: 14px;
+
+  .label {
+    font-weight: bold;
+  }
+
+  .valor {
+    font-weight: normal;
+  }
+}
+
+// === Bloco de Edição ===
+.edicao-bloco {
+  input,
+  select,
+  textarea {
+    font-size: 14px;
+    padding: 6px 8px;
+    border-radius: 4px;
+    width: 100%;
+  }
+}
+
+// === Dropdown Gestão ===
+.dropdown-menu-gestao {
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  min-width: 150px;
+  padding: 0;
+  margin-top: 5px;
+
+  .menu-principal {
+    font-weight: 600;
+    padding-left: 14px;
+    color: #212529;
+    background-color: #f8f9fa;
+  }
+
+  .submenu-item {
+    padding-left: 40px !important;
+    background-color: #f1f1f1 !important;
+    color: #495057 !important;
+    font-weight: normal !important;
+    font-size: 14px !important;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  .dropdown-item:hover {
+    background-color: #e9ecef;
+    color: #000;
+  }
+}
+
+// === Footer ===
+.footer-social {
+  a {
+    color: #666;
+    margin: 0 10px;
+    font-size: 16px;
+
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+// === Tabs ===
+.nav-tabs {
+  .nav-link.active {
+    background-color: $cor-primaria;
+    color: #fff;
+    border-color: #dee2e6 #dee2e6 #fff;
+  }
+
+  .nav-link {
+    color: $cor-primaria;
+  }
+}
+
+.tab-content {
+  background-color: #f8f9fa;
+  border-radius: 0 0 .375rem .375rem;
+  padding: 1rem;
+}

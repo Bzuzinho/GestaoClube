@@ -1,0 +1,40 @@
+/* ======= Layout base ======= */
+.bscn-wrapper{display:flex;min-height:100vh;background:#f6f8fb}
+
+/* Sidebar */
+.bscn-sidebar{width:260px;background:#0f2e4e;color:#fff;display:flex;flex-direction:column;transition:width .2s}
+.bscn-brand{display:flex;gap:.6rem;align-items:center;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.08)}
+.bscn-brand-logo{width:28px;height:28px}
+.bscn-brand-text{font-weight:700;white-space:nowrap}
+
+.bscn-menu{display:flex;flex-direction:column;padding:10px}
+.bscn-menu-item{display:flex;align-items:center;gap:.6rem;color:#dbe7ff;text-decoration:none;border-radius:.5rem;
+                padding:.55rem .7rem;margin:2px 0}
+.bscn-menu-item i{font-size:1rem}
+.bscn-menu-item:hover{background:rgba(255,255,255,.08);color:#fff}
+.bscn-menu-item.active{background:#164a88;color:#fff}
+
+/* Sidebar colapsada */
+.bscn-wrapper.is-collapsed .bscn-sidebar{width:78px}
+.bscn-wrapper.is-collapsed .bscn-menu-item .text,
+.bscn-wrapper.is-collapsed .bscn-brand-text{display:none}
+
+/* Content */
+.bscn-content{flex:1;display:flex;flex-direction:column;min-width:0}
+
+/* Topbar */
+.bscn-topbar{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #e5e9f2;
+             display:flex;align-items:center;justify-content:space-between;padding:.65rem .95rem}
+.bscn-page-title{font-size:1.35rem;font-weight:700;margin:0}
+.bscn-btn-compact{padding:.35rem .55rem;font-size:.85rem;line-height:1.2;border-radius:.35rem}
+
+/* Página */
+.bscn-page{padding:1rem}
+.bscn-card{background:#fff;border:1px solid #e5e9f2;border-radius:12px;padding:1rem}
+
+/* Tabelas coerentes */
+.table thead th{background:#f5f7fb;font-size:.75rem;text-transform:uppercase;letter-spacing:.02em}
+
+/* Ajuste geral a cards de páginas com menos margem superior */
+.bscn-page .bscn-title-strip{background:#1367f2;color:#fff;padding:.6rem .8rem;border-radius:.6rem;
+                             display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}

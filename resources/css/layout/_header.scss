@@ -1,0 +1,6 @@
+.header{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;background:var(--color-surface);border-bottom:1px solid var(--color-border);padding:10px 16px}
+.header__title{flex:1}
+.header__actions{display:flex;gap:8px}
+.icon-btn{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:10px;border:1px solid var(--color-border);background:#fff;color:var(--color-text)}
+.page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.page-title{font-size:18px;margin:0}

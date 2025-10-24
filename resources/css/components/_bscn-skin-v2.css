@@ -1,0 +1,60 @@
+@layer components {
+/* ============================
+   BSCN UI – Skin V2 (Grafismo.pdf)
+   ============================ */
+:root {
+  --bscn-primary: #0d6efd;
+  --bscn-surface: 255 255 255;
+  --bscn-muted: 248 249 250;
+  --bscn-border: 229 231 235;
+}
+.container-page { @apply max-w-7xl mx-auto; }
+
+/* Sidebar */
+.sidebar { @apply w-64 bg-white border-r border-gray-200 shadow-sm hidden md:flex md:flex-col; }
+.sidebar-logo { @apply px-5 py-4 text-xl font-bold text-blue-600; }
+.sidebar-group { @apply px-5 pt-4 pb-2 text-[11px] tracking-wide uppercase text-gray-400 font-semibold; }
+.sidebar-nav { @apply px-2 flex-1 space-y-1; }
+.sidebar-link { @apply flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700; }
+.sidebar-link-active { @apply bg-blue-50 text-blue-700 font-semibold border border-blue-100; }
+.sidebar-icon { @apply text-base; }
+
+/* Topbar */
+.topbar { @apply flex items-center justify-between; }
+.page-title { @apply text-2xl font-semibold; }
+.breadcrumbs { @apply text-sm text-gray-500; }
+.search { @apply relative; }
+.search input { @apply form-input pl-9; }
+.search .icon { @apply absolute left-3 top-2.5 text-gray-400; }
+
+/* Toolbar */
+.toolbar { @apply mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3; }
+.toolbar-filters { @apply flex items-center gap-2 flex-wrap; }
+.chip { @apply inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 text-xs text-gray-700; }
+.chip-active { @apply bg-blue-50 text-blue-700; }
+
+/* KPI cards */
+.kpi { @apply bg-white rounded-2xl shadow-sm p-5 flex items-center justify-between; }
+.kpi .meta { @apply text-[11px] uppercase text-gray-500 tracking-wide font-semibold; }
+.kpi .value { @apply text-3xl font-semibold text-blue-600 mt-1; }
+.kpi .trend { @apply text-xs text-gray-400; }
+.kpi .icon { @apply w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600; }
+
+/* Tables */
+.table-panel { @apply overflow-hidden rounded-2xl shadow-sm bg-white border border-gray-200; }
+.table-panel .header { @apply px-4 py-3 border-b border-gray-200 flex items-center justify-between; }
+.table-compact { @apply w-full text-sm; }
+.table-compact thead th { @apply text-left font-semibold text-gray-600 bg-gray-50; }
+.table-compact th, .table-compact td { @apply px-4 py-3; }
+.table-compact tbody tr { @apply border-b; }
+.table-compact tbody tr:hover { @apply bg-gray-50; }
+
+/* Buttons */
+.btn { @apply inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2; }
+.btn-primary { @apply btn bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-300; }
+.btn-ghost { @apply btn bg-transparent text-gray-700 hover:bg-gray-100; }
+
+/* Cards & sections */
+.card { @apply bg-white rounded-2xl shadow-sm p-5; }
+.section { @apply mt-8; }
+}

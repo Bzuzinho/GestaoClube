@@ -1,0 +1,6 @@
+.u-muted{ color:var(--bscn-muted); }
+.u-ellipsis{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.u-scroll{ overflow:auto; }
+.u-grid-12{ display:grid; grid-template-columns:repeat(12,1fr); gap:18px; }
+.u-span-3{ grid-column:span 3; } .u-span-4{ grid-column:span 4; } .u-span-8{ grid-column:span 8; }
+@media (max-width: 1024px){ .u-grid-12{ grid-template-columns:1fr; } .u-span-3,.u-span-4,.u-span-8{ grid-column:auto; } }

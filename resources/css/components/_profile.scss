@@ -1,0 +1,22 @@
+/* Escopo exclusivo da página de perfil */
+.bscn-profile {
+
+  .badge-ribbon {
+    background: #0d6efd;
+    color: #fff;
+    border-radius: .5rem;
+    padding: .5rem .75rem;
+    font-weight: 600;
+    display: inline-block;
+  }
+
+  .avatar-xl { width: 72px; height: 72px; }
+  .avatar-xl img { width: 72px; height: 72px; object-fit: cover; }
+  .avatar-fallback { width: 72px; height: 72px; background:#f3f4f6; border:1px solid #e5e7eb; font-size: 28px; color:#97a3b3; }
+
+  .bscn-tabs .nav-link { border-radius: .5rem; padding: .4rem .75rem; }
+  .bscn-tabs .nav-link.active { background: #0d6efd; color: #fff; }
+
+  /* Reutiliza a tabela compacta global sem mexer nela */
+  .table-compact { font-size: 13px; }
+}

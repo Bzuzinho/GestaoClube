@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== BSCN UI + SKIN V2 (inline para evitar problemas de import) ===== */
+@layer components {
+  /* Tokens simples */
+  :root {
+    --bscn-primary: #0d6efd;
+    --bscn-surface: 255 255 255;
+    --bscn-muted: 248 249 250;
+    --bscn-border: 229 231 235;
+  }
+
+  /* Botões */
+  .btn-compact { @apply inline-flex items-center px-3 py-1.5 text-sm font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2; }
+  .btn-primary  { @apply btn-compact bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-300; }
+  .btn-secondary{ @apply btn-compact bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-300; }
+  .btn-danger   { @apply btn-compact bg-red-600 text-white hover:bg-red-700 focus:ring-red-300; }
+  .btn-ghost    { @apply btn-compact bg-transparent text-gray-700 hover:bg-gray-100; }
+
+  /* Badges */
+  .badge { @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold; }
+  .badge-soft { @apply bg-gray-100 text-gray-700; }
+  .badge-soft-success { @apply bg-green-100 text-green-700; }
+  .badge-soft-warning { @apply bg-yellow-100 text-yellow-800; }
+  .badge-soft-danger  { @apply bg-red-100 text-red-700; }
+  .badge-soft-info    { @apply bg-blue-100 text-blue-700; }
+
+  /* Tabela compacta */
+  .table-compact { @apply w-full text-sm; }
+  .table-compact thead th { @apply text-left font-semibold text-gray-600 bg-gray-50; }
+  .table-compact th, .table-compact td { @apply px-3 py-2; }
+  .table-compact tbody tr { @apply border-b; }
+  .table-compact tbody tr:hover { @apply bg-gray-50; }
+
+  /* Cartão genérico e KPI */
+  .card { @apply bg-white rounded-2xl shadow-sm p-5; }
+  .card-kpi { @apply bg-white rounded-2xl shadow p-4 flex items-center justify-between; }
+  .card-kpi .meta { @apply text-[11px] uppercase text-gray-500 font-semibold tracking-wide; }
+  .card-kpi .value { @apply text-3xl font-semibold text-blue-600 mt-1; }
+  .card-kpi .trend { @apply text-xs text-gray-400; }
+  .card-kpi .icon { @apply w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600; }
+
+  /* Layout/Sidebar/Topbar */
+  .container-page { @apply max-w-7xl mx-auto; }
+  .sidebar { @apply w-64 bg-white border-r border-gray-200 shadow-sm hidden md:flex md:flex-col; }
+  .sidebar-logo { @apply px-5 py-4 text-xl font-bold text-blue-600; }
+  .sidebar-group { @apply px-5 pt-4 pb-2 text-[11px] tracking-wide uppercase text-gray-400 font-semibold; }
+  .sidebar-nav { @apply px-2 flex-1 space-y-1; }
+  .sidebar-link { @apply flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700; }
+  .sidebar-link-active { @apply bg-blue-50 text-blue-700 font-semibold border border-blue-100; }
+  .sidebar-icon { @apply text-base; }
+
+  .topbar { @apply flex items-center justify-between; }
+  .page-title { @apply text-2xl font-semibold; }
+  .breadcrumbs { @apply text-sm text-gray-500; }
+  .search { @apply relative; }
+  .search input { @apply block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm pl-9; }
+  .search .icon { @apply absolute left-3 top-2.5 text-gray-400; }
+
+  /* Toolbar e chips */
+  .toolbar { @apply mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3; }
+  .toolbar-filters { @apply flex items-center gap-2 flex-wrap; }
+  .chip { @apply inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 text-xs text-gray-700; }
+  .chip-active { @apply bg-blue-50 text-blue-700; }
+
+  /* Painel de tabela */
+  .table-panel { @apply overflow-hidden rounded-2xl shadow-sm bg-white border border-gray-200; }
+  .table-panel .header { @apply px-4 py-3 border-b border-gray-200 flex items-center justify-between; }
+
+  /* Secções */
+  .section { @apply mt-8; }
+}
+
+@layer components {
+  /* Sidebar dark */
+  .sidebar-dark { @apply flex flex-col h-screen w-72 bg-[#0B2F55] text-white; } /* azul escuro */
+  .sidebar-section { @apply px-4; }
+  .sidebar-top    { @apply sidebar-section py-5 border-b border-white/10; }
+  .sidebar-middle { @apply sidebar-section py-4 flex-1 overflow-y-auto; }
+  .sidebar-bottom { @apply sidebar-section py-4 border-t border-white/10; }
+
+  .club-title  { @apply text-xl font-semibold text-white; }
+  .club-sub    { @apply text-xs text-white/50; }
+
+  .menu-heading { @apply text-[12px] uppercase tracking-wide text-white/70 mb-3; }
+
+  .menu-list   { @apply space-y-2; }
+  .menu-link   { @apply flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-white hover:bg-white/10 transition-colors; }
+  .menu-active { @apply bg-white/15 ring-1 ring-white/10; }
+
+  .user-card   { @apply flex items-center gap-3; }
+  .avatar      { @apply h-10 w-10 rounded-full bg-white/10 ring-1 ring-white/20 overflow-hidden; }
+  .user-name   { @apply text-sm font-medium text-white; }
+  .user-email  { @apply text-xs text-white/60; }
+
+  .btn-logout  { @apply mt-3 inline-flex items-center gap-2 px-3 py-2 text-sm rounded-lg bg-white/10 hover:bg-white/15; }
+
+  /* Sidebar: transições e estados */
+  .sidebar {
+    @apply transition-transform duration-200 ease-in-out will-change-transform;
+  }
+
+  /* Mobile: off-canvas por defeito (escondida à esquerda) */
+  .sidebar--mobile-hidden {
+    @apply -translate-x-full;
+  }
+
+  /* Quando visível no mobile */
+  .sidebar--mobile-visible {
+    @apply translate-x-0;
+  }
+
+  /* Overlay para escurecer o conteúdo ao abrir a sidebar no mobile */
+  .sidebar-overlay {
+    @apply fixed inset-0 bg-black/30 opacity-0 pointer-events-none transition-opacity duration-200;
+  }
+  .sidebar-overlay--active {
+    @apply opacity-100 pointer-events-auto;
+  }
+
+  /* Empurrar conteúdo quando sidebar colapsa em desktop (opcional) */
+  .content {
+    @apply transition-[margin] duration-200;
+  }
+  .content--collapsed {
+    @apply ml-0;
+  }
+
+  /* Larguras padrão */
+  .sidebar-width {
+    @apply w-72; /* 288px */
+  }
+
+}

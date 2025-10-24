@@ -1,0 +1,168 @@
+@use 'tokens/theme';
+@use 'base/reset';
+@use 'base/typography';
+@use 'layout/shell';
+@use 'layout/header';
+@use 'layout/sidebar';
+@use 'components/buttons';
+@use 'components/cards';
+@use 'components/tables';
+@use 'components/forms';
+
+/* === SHELL E COLAPSO === */
+.shell{ display:grid; grid-template-columns: 220px 1fr; min-height:100vh; }
+.shell.is-collapsed{ grid-template-columns: 65px 1fr; }
+
+/* === SIDEBAR === */
+.sidebar{ background:#0b2b5b; color:#e6edf6; display:flex; flex-direction:column; }
+.brand{ display:flex; align-items:center; gap:12px; padding:14px; border-bottom:1px solid rgba(255,255,255,.08); }
+.brand__logo{ width:40px; height:40px; border-radius:8px; }
+.brand__text{ line-height:1.1; }
+.menu{ display:flex; flex-direction:column; padding:8px; }
+.menu__item{ display:flex; align-items:center; gap:12px; padding:10px 12px; border-radius:10px; color:#c6d5f3; overflow:hidden; }
+.menu__item:hover{ background:rgba(255,255,255,.08); }
+.menu__item{ display:flex; align-items:center; gap:10px; padding:9px 10px; border-radius:10px; color:#c6d5f3; }
+.menu .icon{ width:22px; font-size:15px; display:inline-grid; place-items:center; }
+.menu .label{ white-space:nowrap; transition:opacity .15s ease, transform .15s ease; }
+.chev-right{ display:none; }
+.shell.is-collapsed .menu__item{ justify-content:center; gap:0; padding:10px 0; }
+.shell.is-collapsed .menu .label{ display:none; }
+.shell.is-collapsed .brand__text{ display:none; }
+.sidebar__account .btn-ghost{
+  display:inline-flex; align-items:center; gap:8px;
+  background:transparent; border:1px solid rgba(255,255,255,.25);
+  color:#fff; opacity:.95;
+}
+.sidebar__account .btn-ghost:hover{ background:rgba(255,255,255,.08); opacity:1; }
+.sidebar__account .btn-ghost svg{ width:14px; height:14px; stroke:currentColor; fill:none; }
+
+/* rodapé */
+.sidebar__account{ margin-top:auto; padding:10px 12px; border-top:1px solid rgba(255,255,255,.08);
+  display:flex; flex-direction:column; gap:8px; color:#e6edf6; }
+.acc__user{ display:flex; align-items:center; gap:10px; }
+.acc__avatar{ width:28px; height:28px; display:grid; place-items:center;
+  border:1px solid rgba(255,255,255,.25); border-radius:8px; color:#fff; }
+.acc__name .name{ font-weight:600; font-size:13px; line-height:1.2; }
+.acc__name .mail{ font-size:12px; opacity:.8; }
+
+.acc__actions .btn-ghost{ display:inline-flex; align-items:center; gap:8px;
+  background:transparent; border:1px solid rgba(255,255,255,.25); color:#fff; opacity:.95;
+  padding:6px 10px; border-radius:10px; }
+.acc__actions .btn-ghost:hover{ background:rgba(255,255,255,.08); opacity:1; }
+.acc__actions .btn-ghost svg{ stroke:currentColor; }
+
+/* quando colapsado: só ícones (sem texto) no rodapé */
+.shell.is-collapsed .acc__name{ display:none; }
+.shell.is-collapsed .acc__actions .btn-ghost{ padding:8px; width:100%; justify-content:center; }
+.shell.is-collapsed .acc__actions .btn-ghost .btn__text{ display:none; }
+
+/* === HEADER (mais estreito; título + subtítulo em coluna) === */
+.header{ position:sticky; top:0; z-index:20; display:grid; grid-template-columns:auto 1fr auto;
+         align-items:center; gap:12px; background:#fff; border-bottom:1px solid #e6e9ef; padding:6px 12px; }
+.header__title{ display:flex; flex-direction:column; }
+.page-title{ font-size:20px; margin:0; }
+.page-subtitle{ font-size:12px; color:#64748b; margin:2px 0 0; }
+.icon-btn{ width:36px; height:36px; }
+.icon-btn--sm{ width:32px; height:32px; }
+
+/* === MAIN === */
+.main{ padding:18px; }
+
+/* === TABELA/CARDS CONSISTENTES (resumo; mantém os teus restantes) === */
+.table-wrap{ background:#fff; border:1px solid #e6e9ef; border-radius:12px; padding:12px; }
+.table{ width:100%; border-collapse:separate; border-spacing:0; }
+.table-compact th,.table-compact td{ padding:8px 10px; }
+.table-compact thead th{ background:#f2f5fb; color:#0b2b5b; text-transform:uppercase; font-weight:600; font-size:12px; border-bottom:1px solid #e6e9ef; }
+
+/* === REMOVER/NEUTRALIZAR BGs E HERO ANTIGOS === */
+/* alguns blades tinham pseudo-elementos ou imagens gigantes no fundo */
+.hero, .dashboard-bg, .page-hero { display:none !important; }
+body{ background:#f5f7fb; }
+
+/* ===== Tabela “pessoas” ===== */
+.table-wrap{ background:#fff; border:1px solid #e6e9ef; border-radius:12px; }
+.table{ width:100%; border-collapse:separate; border-spacing:0; }
+.table-compact th,.table-compact td{ padding:10px 12px; }
+.table-compact thead th{
+  font-size:12px; text-transform:uppercase; letter-spacing:.02em;
+  background:#f6f8fc; color:#0b2b5b; border-bottom:1px solid #e6e9ef;
+}
+.table-title{
+  padding:12px 14px;
+  border-bottom:1px solid #e6e9ef;
+  font-weight:800;        /* bem marcado */
+  font-size:18px;         /* maior */
+  line-height:1.25;
+  color:#0b2b5b;          /* o azul do tema */
+}
+/* separadores verticais subtis */
+.table-lines thead th + th,
+.table-lines tbody td + td{ border-left:1px solid #eef2f7; }
+.table-lines tbody tr{ border-bottom:1px solid #f1f4f9; }
+.table-lines tbody tr:last-child{ border-bottom:0; }
+
+/* célula do utilizador (avatar/foto + nome) */
+.cell-user{ display:flex; align-items:center; gap:10px; }
+.avatar-img{ width:32px; height:32px; border-radius:8px; object-fit:cover; border:1px solid #e6e9ef; }
+.avatar-badge{ width:32px; height:32px; border-radius:8px; background:#10356d; color:#fff;
+  display:grid; place-items:center; font-weight:700; font-size:12px; }
+.user-meta .user-name{ font-weight:600; }
+.user-meta .user-sub{ font-size:12px; color:#64748b; }
+
+/* badges simples (usa as tuas classes se já existirem) */
+.badge{ display:inline-flex; align-items:center; gap:6px; border-radius:999px; padding:.15rem .5rem; font-size:12px; border:1px solid transparent; }
+.badge--success{ background:#e7f8ee; color:#166534; border-color:#bbf7d0; }
+.badge--danger{ background:#fee2e2; color:#991b1b; border-color:#fecaca; }
+
+/* tags de tipos */
+.tags{ display:flex; flex-wrap:wrap; gap:6px; }
+.tag{ background:#eef2f7; color:#334155; border:1px solid #e6e9ef; border-radius:999px; padding:.15rem .5rem; font-size:12px; }
+
+/* coluna AÇÕES: só ícones e largura mínima */
+.th-actions, .td-actions{ width:1%; white-space:nowrap; text-align:right; }
+.btn-icon{
+  display:inline-grid; place-items:center; width:32px; height:32px;
+  border-radius:10px; border:1px solid #e6e9ef; background:#fff; color:#0b2b5b;
+  transition:transform .12s ease, background .12s ease, color .12s ease;
+  margin-left:6px;
+}
+.btn-icon:hover{ background:#0b2b5b; color:#fff; transform:translateY(-1px); }
+.btn-icon--danger{ color:#b91c1c; border-color:#f3d1d1; }
+.btn-icon--danger:hover{ background:#b91c1c; color:#fff; }
+
+
+/* Modal base (simples) */
+.modal{position:fixed;inset:0;display:grid;place-items:center;background:rgba(15,23,42,.45);z-index:50}
+.modal__dialog{width:min(860px,92vw);background:#fff;border:1px solid var(--color-border);border-radius:12px;overflow:hidden}
+.modal__header{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--color-border)}
+.modal__body{padding:14px}
+.modal__footer{display:flex;justify-content:flex-end;gap:8px;padding:12px 14px;border-top:1px solid var(--color-border)}
+
+/* Grid do formulário */
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.fg--full{grid-column:1 / -1}
+@media (max-width: 1024px){ .form-grid{grid-template-columns:1fr} }
+
+/* tabs simples */
+.tabs{ display:flex; gap:8px; border-bottom:1px solid #e6e9ef; margin-bottom:10px }
+.tab{ padding:8px 10px; border-radius:10px 10px 0 0; color:#0b2b5b }
+.tab.is-active{ background:#f6f8fc; font-weight:700 }
+.tab-panel{ display:none }
+.tab-panel.is-active{ display:block }
+
+/* Tabs barra */
+.bscn-tabs__bar{display:flex; gap:.5rem; background:#f3f5f8; padding:6px; border-radius:8px; margin-bottom:12px}
+.bscn-tab{border:0;background:transparent;padding:8px 12px;border-radius:8px;cursor:pointer}
+.bscn-tab.is-active{background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+
+/* Painéis */
+.bscn-tabpanel{display:none}
+.bscn-tabpanel.is-active{display:block}
+
+/* Grupos */
+.field{display:grid;grid-template-columns:220px 1fr;gap:10px;align-items:center}
+.field__label{color:#344055;font-weight:600}
+.field__control .input{width:100%}
+
+/* Avatares */
+.avatar-xl{object-fit:cover}

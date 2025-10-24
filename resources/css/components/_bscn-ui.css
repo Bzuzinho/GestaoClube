@@ -1,0 +1,59 @@
+@layer components {
+/* Botões */
+.btn-compact { @apply inline-flex items-center px-3 py-1.5 text-sm font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2; }
+.btn-primary  { @apply btn-compact bg-primary text-white hover:bg-blue-700 focus:ring-blue-300; }
+.btn-secondary{ @apply btn-compact bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-300; }
+.btn-danger   { @apply btn-compact bg-red-600 text-white hover:bg-red-700 focus:ring-red-300; }
+.btn-ghost    { @apply btn-compact bg-transparent text-gray-700 hover:bg-gray-100; }
+
+/* Badges */
+.badge { @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold; }
+.badge-soft { @apply bg-gray-100 text-gray-700; }
+.badge-soft-success { @apply bg-green-100 text-green-700; }
+.badge-soft-warning { @apply bg-yellow-100 text-yellow-800; }
+.badge-soft-danger  { @apply bg-red-100 text-red-700; }
+.badge-soft-info    { @apply bg-blue-100 text-blue-700; }
+
+/* Tabelas compactas */
+.table-compact { @apply w-full text-sm; }
+.table-compact thead th { @apply text-left font-semibold text-gray-600 bg-gray-50; }
+.table-compact th, .table-compact td { @apply px-3 py-2; }
+.table-compact tbody tr { @apply border-b; }
+.table-compact tbody tr:hover { @apply bg-gray-50; }
+
+/* Cartões KPI */
+.card-kpi { @apply bg-white rounded-2xl shadow p-4 flex flex-col justify-between; }
+.card-kpi h3 { @apply text-[11px] uppercase text-gray-500 font-semibold tracking-wide; }
+.card-kpi p  { @apply text-3xl font-semibold text-primary mt-1; }
+.card-kpi .sub { @apply text-xs text-gray-400 mt-1; }
+
+/* Paginação */
+.pagination { @apply flex items-center gap-1; }
+.pagination a, .pagination span { @apply px-3 py-1.5 rounded border text-sm; }
+.pagination a { @apply hover:bg-gray-50; }
+.pagination .active { @apply bg-primary text-white border-primary; }
+
+/* Toolbar de página */
+.page-toolbar { @apply flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4; }
+.page-title { @apply text-lg font-semibold; }
+.page-actions { @apply flex items-center gap-2; }
+
+/* Formulários */
+.form-group { @apply mb-3; }
+.form-label { @apply block text-sm font-medium text-gray-700 mb-1; }
+.form-input { @apply block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm; }
+.form-select{ @apply form-input; }
+.form-textarea { @apply form-input min-h-[90px]; }
+.form-help { @apply text-xs text-gray-500 mt-1; }
+.form-error{ @apply text-xs text-red-600 mt-1; }
+
+/* Tabs simples */
+.tabs { @apply border-b flex gap-2; }
+.tab { @apply px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-t-lg; }
+.tab-active { @apply bg-white border-x border-t rounded-t-lg text-gray-900; }
+
+/* Layout */
+.page-card { @apply bg-white rounded-xl shadow p-4; }
+.section { @apply mb-6; }
+.grid-gap-sm { @apply grid gap-3; }
+}
