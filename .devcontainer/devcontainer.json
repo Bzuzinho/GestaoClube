@@ -1,4 +1,19 @@
 {
   "image": "mcr.microsoft.com/devcontainers/php:1-8.3-bullseye",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
+
+  {
+  "image": "mcr.microsoft.com/devcontainers/php:1-8.3-bullseye",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    }
+  },
+  "forwardPorts": [8000, 5173],
+  "portsAttributes": {
+    "8000": { "label": "Laravel", "onAutoForward": "openBrowser" },
+    "5173": { "label": "Vite", "onAutoForward": "ignore" }
+  },
+  "postCreateCommand": "composer install && npm install && php artisan key:generate && php artisan storage:link"
+}
 }
