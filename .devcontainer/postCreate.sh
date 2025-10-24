@@ -3,7 +3,7 @@ set -e
 
 echo ">> Installing PHP/Node deps"
 
-# Algumas imagens já trazem pdo_mysql; se não, tenta ativar (não falha o build se não der)
+# Garante pdo_mysql (algumas imagens já têm)
 php -m | grep -qi pdo_mysql || (sudo apt-get update && sudo apt-get install -y php8.3-mysql || true)
 
 [ -f composer.json ] && composer install --no-interaction --prefer-dist || true
@@ -31,7 +31,7 @@ fi
 php artisan key:generate || true
 php artisan storage:link || true
 
-# Espera pelo MySQL do feature (localhost:3306)
+# Espera pelo MySQL e migra
 for i in {1..40}; do
   if mysql -h 127.0.0.1 -u bscn -pbscn -e "SELECT 1" >/dev/null 2>&1; then
     php artisan migrate --seed || true
