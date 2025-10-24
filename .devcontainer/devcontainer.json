@@ -1,39 +1,4 @@
 {
-  "name": "Laravel Online Dev (Simple)",
   "image": "mcr.microsoft.com/devcontainers/php:1-8.3-bullseye",
-  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-
-  "features": {
-    "ghcr.io/devcontainers/features/node:1": { "version": "20" },
-    "ghcr.io/devcontainers/features/mysql:1": {
-      "version": "8.0",
-      "port": 3306,
-      "database": "bscn",
-      "user": "bscn",
-      "password": "bscn"
-    }
-  },
-
-  "forwardPorts": [8000, 5173, 3306],
-  "portsAttributes": {
-    "8000": { "label": "Laravel", "onAutoForward": "openBrowser" },
-    "5173": { "label": "Vite", "onAutoForward": "ignore" }
-  },
-
-  "postCreateCommand": "bash .devcontainer/postCreate.sh",
-  "postStartCommand": "bash .devcontainer/postStart.sh",
-
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "bmewburn.vscode-intelephense-client",
-        "xdebug.php-pack",
-        "onecentlin.laravel-blade",
-        "amiralizadeh9480.laravel-extra-intellisense",
-        "ryannaddy.laravel-artisan",
-        "bradlc.vscode-tailwindcss",
-        "esbenp.prettier-vscode"
-      ]
-    }
-  }
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
 }
