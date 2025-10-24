@@ -1,54 +1,39 @@
 {
-  "name": "Laravel Online Dev",
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "app",
+  "name": "Laravel Online Dev (Simple)",
+  "image": "mcr.microsoft.com/devcontainers/php:1-8.3-bullseye",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
   "features": {
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "20"
+    "ghcr.io/devcontainers/features/node:1": { "version": "20" },
+    "ghcr.io/devcontainers/features/mysql:1": {
+      "version": "8.0",
+      "port": 3306,
+      "database": "bscn",
+      "user": "bscn",
+      "password": "bscn"
     }
   },
-  "forwardPorts": [
-    8000,
-    5173,
-    3306
-  ],
+
+  "forwardPorts": [8000, 5173, 3306],
   "portsAttributes": {
-    "8000": {
-      "label": "Laravel",
-      "onAutoForward": "openPreview"
-    },
-    "5173": {
-      "label": "Vite",
-      "onAutoForward": "ignore"
-    },
-    "3306": {
-      "label": "MySQL",
-      "onAutoForward": "ignore"
-    }
+    "8000": { "label": "Laravel", "onAutoForward": "openBrowser" },
+    "5173": { "label": "Vite", "onAutoForward": "ignore" }
   },
+
   "postCreateCommand": "bash .devcontainer/postCreate.sh",
   "postStartCommand": "bash .devcontainer/postStart.sh",
+
   "customizations": {
     "vscode": {
       "extensions": [
         "bmewburn.vscode-intelephense-client",
-        "DEVSENSE.phptools-vscode",
         "xdebug.php-pack",
         "onecentlin.laravel-blade",
         "amiralizadeh9480.laravel-extra-intellisense",
-        "codingyu.laravel-goto-view",
         "ryannaddy.laravel-artisan",
-        "csstools.postcss",
-        "esbenp.prettier-vscode",
-        "dbaeumer.vscode-eslint",
-        "bradlc.vscode-tailwindcss"
-      ],
-      "settings": {
-        "php.validate.executablePath": "/usr/local/bin/php",
-        "editor.formatOnSave": true,
-        "files.eol": "\n"
-      }
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode"
+      ]
     }
   }
 }

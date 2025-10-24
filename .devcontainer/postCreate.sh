@@ -1,35 +1,43 @@
 #!/usr/bin/env bash
 set -e
 
-echo ">> Post-create: installing PHP and Node dependencies"
-if [ -f composer.json ]; then
-  composer install --no-interaction --prefer-dist
-fi
+echo ">> Installing PHP/Node deps"
 
-if [ -f package.json ]; then
-  npm install
-fi
+# Algumas imagens já trazem pdo_mysql; se não, tenta ativar (não falha o build se não der)
+php -m | grep -qi pdo_mysql || (sudo apt-get update && sudo apt-get install -y php8.3-mysql || true)
+
+[ -f composer.json ] && composer install --no-interaction --prefer-dist || true
+[ -f package.json ] && npm install || true
 
 # .env
 if [ ! -f .env ]; then
   if [ -f .env.example ]; then
     cp .env.example .env
   else
-    touch .env
+    cat > .env <<'EOF'
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://localhost:8000
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=bscn
+DB_USERNAME=bscn
+DB_PASSWORD=bscn
+EOF
   fi
 fi
 
-# Laravel key & storage link
 php artisan key:generate || true
 php artisan storage:link || true
 
-# Run migrations (db container may still be booting; retry)
-for i in {1..20}; do
-  if mysql -h db -u bscn -pbscn -e "SELECT 1" >/dev/null 2>&1; then
+# Espera pelo MySQL do feature (localhost:3306)
+for i in {1..40}; do
+  if mysql -h 127.0.0.1 -u bscn -pbscn -e "SELECT 1" >/dev/null 2>&1; then
     php artisan migrate --seed || true
     break
   else
-    echo "Waiting for db... ($i/20)"
+    echo "Waiting for mysql... ($i/40)"
     sleep 3
   fi
 done
